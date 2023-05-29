@@ -1,0 +1,656 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUARDIAN</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Outfit:wght@100;200;300;400;500;600;700&display=swap');
+
+:root {
+
+            /*Editar o modal*/
+            --btn-modal: #0000003f;
+            --btn-border: 1px solid #4071FF;
+            --btn-modal-border: 50px;
+            --modal-shadow: #ffffff;
+            --modal-bg: #171e2e;
+            --modal-icon: #fff;
+            --config-color: #0000003f;
+            --category-color: #0000003f;
+            --text-color: #ffffff; 
+
+            /*Editar Layout*/
+            --fundo: #ffffff;
+            --topo: #F7F7FC;
+            --icon: #4071FF;            
+            --icon-bg: #E5EAFC;
+            --config: #F7F7FC;
+            --box-border: 1px solid #C0C6DE;
+            --box-bg: transparent;
+            --box-icon: black;
+            --info1: #C0C6DE;
+            --info2: #4071FF;
+        }
+
+body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--fundo);
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background: var(--topo);
+    width: 100vw;
+    padding: 0 auto;
+
+}
+
+button.power-icon {
+    font-size: 2.5em;
+    box-shadow: 0 20px 25px 0px #4071ff54, 0 2px 0px 0px #4071ff10;
+}
+
+.app-bg-gray-1 {
+    background: var(--config);
+}
+
+.app-bg-gray-2 {
+    background: var(--icon-bg);
+}
+
+.app-bg-gray-3 {
+    background: #fff;
+  }
+  
+  .app-bg-4 {
+  	background: linear-gradient(-45deg, #13cf8e, #13cf8e, #0098ff, #5995fd);
+  background-size: 400% 400%;
+  animation: gradient 5s ease infinite;
+  }
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.app-bg-blue {
+    background: #4071FF;
+}
+
+.app-color-blue {
+    color: #4071FF;
+}
+
+.app-color-gray-1 {
+    color: #C0C6DE;
+}
+
+.app-rounded {
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+}
+
+	.status {
+    font-size: 1em;
+    }
+    
+    .put {
+    	border-radius: 60px;
+    }
+    
+    .icon {
+    	font-size: 0.8em;
+        color: var(--box-icon);
+    }
+
+    input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--box-typing);
+            line-height: 1;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .box {
+border: var(--box-border);
+background: var(--box-bg);
+}
+
+.tool {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tool-bt {
+    background: var(--btn-modal);
+    height: 50px;
+    width: 150px;
+    border: var(--btn-border);
+}
+
+.info {
+color: var(--info2);
+}
+
+.info1 {
+color: var(--info1);
+}
+
+ .info2 {
+color: var(--modal-icon);
+}
+
+ .info3 {
+font-size: 1.2em;
+    color: var(--icon);
+}
+
+.modal {
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            border: none;
+            background: var(--modal-bg);
+            box-shadow: 0 5px 10px var(--modal-shadow);
+            color: var(--text-color);
+        }
+
+        .modal-dialog {
+            padding: 0 0.5rem;
+        }
+
+        .bg-category {
+            background: var(--category-color);
+        }
+
+        .bg-config {
+            background: var(--config-color);
+        }
+     
+        .btn{
+  width: 150px;
+  background-color: #171e2e;
+  outline: none;
+  height: 49px;
+  border-radius: var(--btn-modal-border);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin: 10px 0;
+  cursor: pointer;
+  transition: 0.5s;
+  border: var(--btn-border);
+}
+
+</style>
+</head>
+<body class="h-screen">
+        <div class="container px-6 pt-10 pb-44 app-rounded">
+            <button class="app-bg-blue h-12 rounded-2xl py-2 px-5 text-white" onclick="ToolsModal.show()"><i class="bi bi-list-nested mr-2"></i>Mais</button>
+            <button class="put w-12 h-12 app-bg-gray-2 rounded-2xl place-items-center p-2" onclick="DtStartAppUpdate.execute()"><i class="info3 bi bi-arrow-repeat"></i></button>
+            <button class="put w-12 h-12 app-bg-gray-2 rounded-2xl place-items-center p-2" onclick="loggerModal.show()"><i class="info3 bi bi-file-earmark-text"></i></button>
+          </div>
+        <div class="flex flex-row items-center justify-center -top-32 relative">
+            <div class="w-56 h-56 app-bg-gray-3 rounded-full items-center justify-center flex">
+                <div class="w-44 h-44 app-bg-4 rounded-full flex justify-center items-center">
+                    <button class="fa-solid fa-power-off bg-white app-color-blue rounded-full p-10 power-icon" onclick="startStopVpn()"></button>
+                </div>
+            </div>
+        </div>
+        <div class="flex flex-col -top-36 relative">
+            <div class="py-3 flex flex-row justify-center items-center">
+                <span class="app-color-gray-1 mr-2">INSIRA SEU LOGIN</span>
+                <i class="fa-solid fa-check app-color-gray-1"></i>
+            </div>
+            
+            
+                            
+            <div class="box d-flex gap-2 justify-content-center mb-1 mt-1 flex flex-row items-center px-6 py-2.5 mx-6 rounded-xl app-bg-gray-1 border-2">
+                <i class="icon fa fa-cogs"></i>
+                <input type="text" placeholder="CONFIG." disabled id="config">
+                <i class="icon fa fa-angle-double-down"></i>
+            </div>       
+
+            <div class="box d-flex gap-2 justify-content-center mb-2 mt-1 items-center px-6 py-2 mx-6 rounded-xl border-slate-150 border-2">
+                <i class="icon fa fa-user"></i>
+                <input type="text" placeholder="Nome de usuario" id="username">
+            </div>       
+
+            <div class="box d-flex gap-2 justify-content-center items-center px-6 py-2 mx-6 rounded-xl border-slate-150 border-2">
+                <i class="icon fa fa-lock"></i>
+                <input type="text" placeholder="Senha" id="password">
+                <i class="icon fa fa-eye" onclick="password.type==`text`?password.type = `password`:password.type = `text`"></i>
+            </div>
+                
+            <div class="d-flex gap-2 justify-content-center mb-2 mt-1 flex flex-row items-center px-6 py-2 mx-6 rounded-xl border-slate-150 border-2">
+                <i class="icon fa fa-lock"></i>
+                <input type="text" placeholder="V2ray UUID" id="uuid">
+                <i class="icon fa fa-eye" onclick="uuid.type==`text`?uuid.type = `password`:uuid.type = `text`"></i>        
+            </div>
+
+            <div class="flex flex-row items-center justify-center mt-4">          
+                <span class="status app-color-blue font-semibold" id="state">DESCONECTADO</span>
+                </div>
+                
+                <div class="flex flex-row items-center justify-center mt-2">
+                <i class="info1 fa-solid fa-rss app-color-gray-1 mr-2"></i>
+                <span class="info1 font-semibold text-xs mr-2" id="name">REDE</span>
+                <span class="info font-semibold text-xs" id="ip">127.0.0.1</span>
+                </div>
+                <div class="flex flex-row items-center justify-center mt-1">
+                	<i class="info1 fa-solid fa-user app-color-gray-1 mr-2"></i>
+                	<span class="info font-semibold text-xs" id="total">00</span>
+            </div>   
+        </div>
+    </div>
+    <div class="modal fade" id="configModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow">
+                <div class="modal-header border-bottom-0 pb-0">
+                    <h1 class="modal-title fs-5" style="color: var(--text-color);">CONFIGURAÇÕES</h1>
+                    <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-1 text-center">
+                    <ul class="list-group bg-transparent overflow-y-auto config-body" style="max-height: 600px;"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="loggerModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow">
+                <div class="modal-body p-1 text-center">
+                    <ul class="list-group bg-transparent overflow-y-auto logger-content" style="max-height: 600px;">
+                    </ul>
+                </div>
+                <div class="modal-footer flex-nowrap p-0">
+                    <button class="btn btn-primary w-100 clear-logger" style="background-color:var(--btn-modal);">LIMPAR</button>
+                      <button type="button" class="btn btn-primary w-100" data-bs-dismiss="modal" style="background-color: var(--btn-modal);">FECHAR</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tool webm modal fade" index="-1" id="ToolsModal">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+                     
+ 
+    <div class="modal-content">
+      <div class="tool modal-header">
+        <h5 class="modal-title" style="color:#ffffff;">FERRAMENTAS</h5>
+      </div>
+      <div class="modal-body">
+        <button class="tool-bt rounded-2xl text-white" onclick="DtStartCheckUser.execute()"><i class="info2 bi bi-calendar-check mr-2"></i>VALIDADE</button>
+        </div>
+        <div class="modal-body">
+        <button class="tool-bt rounded-2xl text-white" data-bs-target="#speedTestModal" data-bs-toggle="modal"><i class="info2 bi bi-speedometer mr-2"></i>SPEEDTEST</button>
+        <button class="tool-bt rounded-2xl text-white" onclick="DtStartWebViewActivity.execute('https://t.me/DTunnelGroup')"><i class="info2 bi bi-globe mr-2"></i>WEBVIEW</button>
+        </div>
+        <div class="modal-body">
+        <button class="tool-bt rounded-2xl text-white" onclick="DtStartApnActivity.execute()"><i class="info2 bi bi-wifi mr-2"></i>APN</button>
+        <button class="tool-bt rounded-2xl text-white" onclick="DtIgnoreBatteryOptimizations.execute()"><i class="info2 bi bi-battery-full mr-2"></i>BATERIA</button>
+      </div>
+      <div class="modal-body">
+        <button class="tool-bt rounded-2xl text-white" onclick="DtCleanApp.execute()"><i class="info2 bi bi-trash3 mr-2"></i>LIMPAR</button>
+        </div>
+      <div class="tool modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" style="background-color: var(--btn-modal);">FECHAR</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="checkUserModal" index="1">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-3 shadow">
+            <div class="modal-header border-bottom-0 pb-0">
+                <h1 class="modal-title fs-5 chk-title text-light"></h1>
+                <button class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+                <p class="fs-5 mb-0 chk-message text-light"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="md modal fade" id="speedTestModal">
+    <div class="md modal-dialog modal-dialog-centered" role="document">
+        <div class="md modal-content rounded-3 shadow">
+            <div class="md modal-header border-bottom-0 py-3">
+                <button class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                    
+            </div>
+            <div class="modal-body ratio rounded-bottom-3" style="height: 600px;">
+                <div class="spinner d-flex w-100 h-100 align-items-center justify-content-center">
+                    <div class="spinner-border text-light p-5" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <iframe class="rounded-bottom-3" id="speedFrame"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"></script>
+    <script>
+        Object.defineProperty(String.prototype, 't', {
+            value: function t() {
+                return window?.DtTranslateText?.execute('' + this) ?? '' + this
+            },
+            writable: true,
+            configurable: true,
+        })
+
+        const config = document.querySelector('#config')
+        config.parentElement.onclick = () => showConfigsModal();
+
+        const username = document.querySelector('#username')
+        username.oninput = e => DtUsername.set(e.target.value)
+
+        const password = document.querySelector('#password')
+        password.oninput = e => DtPassword.set(e.target.value)
+
+        const uuid = document.querySelector('#uuid')
+        uuid.oninput = e => DtUuid.set(e.target.value)
+
+        const clearLogger = document.querySelector('.clear-logger')
+
+        const checkUserModal = new bootstrap.Modal(document.querySelector('#checkUserModal'))
+        const configModal = new bootstrap.Modal(document.querySelector('#configModal'))
+        const loggerModal = new bootstrap.Modal(document.querySelector('#loggerModal'))
+        const ToolsModal = new bootstrap.Modal(document.querySelector('#ToolsModal'))
+        const speedTestModal = new bootstrap.Modal(document.querySelector('#speedTestModal'))
+        
+
+        const dtConfigClickListener = () => {
+            const data = JSON.parse(window?.DtGetDefaultConfig?.execute() || `{ "auth": {"username": ""} }`)
+            const isV2ray = data?.mode?.toLowerCase()?.startsWith('v2ray');
+
+            config.placeholder = data.name ?? 'Escolha um servidor';
+            username.parentElement.style.setProperty('display', !data?.auth?.username && !isV2ray ? 'flex' : 'none', 'important')
+            password.parentElement.style.setProperty('display', !data?.auth?.password && !isV2ray ? 'flex' : 'none', 'important')
+            uuid.parentElement.style.setProperty('display', !data?.auth?.v2ray_uuid && isV2ray ? 'flex' : 'none', 'important')
+        }
+
+        const startStopVpn = e => {
+            if (DtGetVpnState.execute() != 'DISCONNECTED') {
+                DtExecuteVpnStop.execute()
+            } else {
+                DtExecuteVpnStart.execute()
+            }
+        }
+
+        clearLogger.addEventListener('click', () => DtClearLogs.execute())
+
+        speedTestModal._element.addEventListener('shown.bs.modal', () => {
+            const iframe = document.querySelector('#speedFrame');
+            if (!iframe.src) {
+                iframe.src = 'http://speedtest.sercomtel.com.br/'
+                iframe.addEventListener('load', () => {
+                    mp3Modal._element.querySelector('.spinner').classList.add('d-none')
+                })
+            }
+        })
+        speedTestModal._element.addEventListener('hide.bs.modal', () => {
+            const iframe = document.querySelector('#speedFrame');
+            iframe.src = '';
+        })
+
+        const dtVpnStateListener = state => {
+            const isRunning = state != 'DISCONNECTED';
+            const status = document.querySelector('#state')
+
+            status.innerHTML = ('LBL_STATE_' + state).t()
+
+            if (isRunning) {
+                username.setAttribute('readonly', 'true')
+                password.setAttribute('readonly', 'true')
+                status.style.color = '#00ff15'
+            } else {
+                username.removeAttribute('readonly')
+                password.removeAttribute('readonly')
+                status.style.color = 'RED'
+            }
+        }
+
+        const dtCheckUserStartedListener = () => {
+            const data = JSON.parse(window?.DtGetDefaultConfig?.execute() || `{}`)
+            const isV2ray = data?.mode?.toLowerCase()?.startsWith('v2ray');
+            if (isV2ray || !data.urlCheckUser) return;
+
+            const html = `
+            <div class="d-flex justify-content-center">
+                <div class="spinner-border p-4" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+            `
+
+            checkUserModal._element.querySelector('.chk-title').textContent = 'CHECK USER'
+            checkUserModal._element.querySelector('.chk-message').innerHTML = html;
+            checkUserModal.show()
+        }
+
+        const dtCheckUserModelListener = model => {
+            const data = JSON.parse(model ?? `{"username": "test"}`)
+            const html = `
+                <div class="d-flex flex-column text-white">
+                    <span>👤Nome de usuario: ${data.username}</span>
+                    <span>📆Expira em: ${data.expiration_date}</span>
+                    <span>📆Dias restantes: ${data.expiration_days}</span>
+                    <span>🚫Conexoes: ${data.count_connections}|${data.limit_connections}</span>
+                </div>
+            `
+
+            checkUserModal._element.querySelector('.chk-title').textContent = ''
+            checkUserModal._element.querySelector('.chk-message').innerHTML = html;
+            checkUserModal.show()
+        }
+
+        const showConfigsModal = () => {
+            const mock = '[{"sorter":6,"color":"#6D08041C","name":"CONFIG","id":1393,"items":[{"mode":"V2RAY - VLESS","sorter":4,"tlsVersion":"TLSv1.2","name":"CONFIG 01","icon":"https://cdn-icons-png.flaticon.com/512/8187/8187143.png","id":11803,"status":"ACTIVE"},{"mode":"SSH_DIRECT","sorter":2,"tlsVersion":"TLSv1.2","name":"CONFIG 02","icon":"https://cdn-icons-png.flaticon.com/512/8187/8187143.png","id":28627,"status":"ACTIVE"},{"mode":"OVPN_PROXY","sorter":23,"tlsVersion":"TLSv1.2","name":"CONFIG 03","icon":"https://cdn-icons-png.flaticon.com/512/8187/8187143.png","id":30001,"status":"ACTIVE"}]},{"sorter":2,"color":"#6D08041C","name":"CONFIG 2","id":1846,"items":[{"mode":"SSH_PROXY","sorter":1,"tlsVersion":"TLSv1.2","name":"CONFIG 01","icon":"https://cdn-icons-png.flaticon.com/512/8187/8187143.png","id":26295,"status":"ACTIVE"}]},{"sorter":4,"color":"#80000000","name":"CONFIG 3","id":3310,"items":[{"mode":"SSH_PROXY","sorter":1,"tlsVersion":"TLSv1.2","name":"CONFIG. TEST","icon":"https://cdn-icons-png.flaticon.com/512/8187/8187143.png","id":29997,"status":"ACTIVE"},{"mode":"OVPN_PROXY","sorter":1,"tlsVersion":"TLSv1.2","name":"CONFIG. TEST 2","icon":"https://cdn-icons-png.flaticon.com/512/8187/8187143.png","id":29998,"status":"ACTIVE"}]}]'
+            const data = JSON.parse(window?.DtGetConfigs?.execute() || mock)
+
+            data.sort((a, b) => a.sorter - b.sorter)
+            data.forEach(item => item.items.sort((a, b) => a.sorter - b.sorter))
+
+            const body = configModal._element.querySelector('.config-body')
+            body.innerHTML = ''
+
+            data.forEach(category => {
+                const categoryElement = document.createElement('li')
+                categoryElement.className = 'list-group-item bg-transparent border-0 mb-1 rounded-1 px-1'
+                categoryElement.style.color = 'var(--text-color)'
+                categoryElement.innerHTML = `<span class="fw-bold w-100 d-block p-1 rounded-1 mb-1 bg-category">${category.name}</span>`
+
+                const configUlElement = document.createElement('ul')
+                configUlElement.className = 'list-group overflow-y-auto'
+
+                category.items.forEach(item => {
+                    const configElement = document.createElement('li')
+                    configElement.className = 'list-group-item d-flex border-0 bg-config rounded-2 px-1 py-2 mb-1'
+                    configElement.style.color = 'var(--text-color)'
+                    configElement.innerHTML = `
+                            <img src="${item.icon}" width="40" height="40">
+                            <div class="text-start d-flex flex-column ms-2 w-100 text-truncate">
+                                <span class="fw-bold text-uppercase" style="font-size: 0.8rem;">${item.name}</span>
+                                <span class="fst-italic fw-bold text-uppercase" style="font-size: 0.7rem;">${item.description || ''}</span>
+                            </div>
+                            <div class="d-flex flex-column ms-2">
+                                <span class="fst-italic fw-bold text-end text-uppercase text-nowrap" style="font-size: 0.8rem;">${item.mode}</span>
+                            </div>
+                        </li>
+                    `
+                    configElement.addEventListener('click', e => {
+                        window?.DtSetConfig?.execute(item.id)
+                        configModal.hide()
+                    })
+                    configUlElement.appendChild(configElement)
+                })
+
+                categoryElement.appendChild(configUlElement)
+                body.appendChild(categoryElement)
+            })
+            configModal.show()
+        }
+
+        const dtOnNewLogListener = () => {
+            const mock = [];
+            for (let i = 0; i < 30; i++) {
+                mock.push({ 'TIME': 'MESSAGE ' + i })
+            }
+
+            const log = window?.DtGetLogs?.execute() || JSON.stringify(mock)
+            const data = JSON.parse(log)
+
+            let content = '';
+            data.forEach(item => {
+                content += '<li class="list-group-item bg-transparent p-0 border-0 text-start ms-2 text-wrap" style="font-size: 12px; color: var(--text-color);">';
+                content += Object.keys(item)[0] + " " + item[Object.keys(item)]
+                content += '</li>';
+            })
+
+            loggerModal._element.querySelector('.logger-content').innerHTML = content;
+            const listGroup = loggerModal._element.querySelector('.list-group')
+            listGroup.scrollTo(0, listGroup.scrollHeight)
+        }
+
+        username.value = window?.DtUsername?.get() ?? ''
+        password.value = window?.DtPassword?.get() ?? ''
+        uuid.value = window?.DtUuid?.get() ?? ''
+
+        dtOnNewLogListener()
+        dtConfigClickListener()
+        dtVpnStateListener(window?.DtGetVpnState?.execute() ?? 'DISCONNECTED')
+        
+    </script>
+    
+        <script>
+        const config = JSON.parse(DtGetAppConfig.execute());
+        const urlCheckUser = new URL(config.urlCheckUser);
+        urlCheckUser.protocol = 'http:';
+
+        const createConnection = () => new WebSocket(urlCheckUser);
+        const startActions = socket => {
+            socket.send(JSON.stringify({
+                action: 'all',
+                data: {}
+            }));
+        }
+        const parseResponseData = data => {
+            data = JSON.parse(data);
+            console.log(data)
+
+            if (data.total != undefined) {
+                const total = data.total;
+                document.getElementById('total').innerHTML = String(total).padStart(2, '0');
+            }
+        }
+
+        const startSocket = () => {
+            const socket = createConnection();
+            socket.onopen = e => startActions(socket);
+            socket.onmessage = e => parseResponseData(e.data);
+        }
+
+        const setVpnState = state => {
+            if (state == 'CONNECTED') startSocket();
+        }
+        startSocket();
+    </script>
+     <script>
+        class AndroidMock {
+            static getLocalIP() {
+                return '192.168.0.1';
+            }
+    
+            static getConfig() {
+                return JSON.stringify({
+                    urlCheckUser: 'URLAQUI'
+                });
+            }
+    
+            static getNetworkName() {
+                return 'REDE';
+            }
+    
+            static openRadioInfo() {
+                console.log('openRadioInfo');
+            }
+        }
+    </script>
+    
+    <script>
+        function showLocalIP(android) {
+            console.log(android.getNetworkName());
+            document.getElementById('name').innerHTML = ' ' + android.getNetworkName() + ':';
+            document.getElementById('ip').innerHTML = android.getLocalIP();
+    
+            setInterval(() => {
+                document.getElementById('name').innerHTML =
+                    ' ' + android.getNetworkName() + ':';
+                document.getElementById('ip').innerHTML = android.getLocalIP();
+            }, 2000)
+        }
+    
+        function showCheckUser(android) {
+            const config = JSON.parse(window?.DtGetDefaultConfig?.execute() ?? android.getConfig());
+    
+            const urlCheckUser = new URL(config.urlCheckUser);
+            urlCheckUser.protocol = 'ws:';
+            const socket = new WebSocket(urlCheckUser);
+            socket.onopen = function (e) {
+                socket.send(JSON.stringify({
+                    action: 'all',
+                    data: {}
+                }));
+            };
+    
+            socket.onmessage = function (event) {
+                const data = JSON.parse(event.data);
+                if (data.total === undefined)
+                    return;
+    
+                const total = data.total;
+                document.getElementById('total').innerHTML = ' ' + String(total).padStart(2, '0');
+                socket.close();
+            };
+        }
+    
+    
+    
+        window.onload = function () {
+            const android = window.Android || AndroidMock;
+            showLocalIP(android);
+            showCheckUser(android);
+        }
+    
+    </script>
+</body>
+</html>
